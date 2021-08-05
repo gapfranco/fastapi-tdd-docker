@@ -5,12 +5,15 @@ from typing import List, Union
 from app.models.pydantic import SummaryPayloadSchema
 from app.models.tortoise import TextSummary
 
+# async def post(payload: SummaryPayloadSchema) -> int:
+#     article_summary = generate_summary(payload.url)
+#     summary = TextSummary(url=payload.url, summary=article_summary)
+#     await summary.save()
+#     return summary.id
+
 
 async def post(payload: SummaryPayloadSchema) -> int:
-    summary = TextSummary(
-        url=payload.url,
-        summary="dummy summary",
-    )
+    summary = TextSummary(url=payload.url, summary="")
     await summary.save()
     return summary.id
 
